@@ -7,11 +7,13 @@
 </app-todo-item>
 -->
 <div class="p-2">
+  <app-todo-add (addTodo)="HandleAddTodo($event)"></app-todo-add>
   @for (todo of todos; track todo.id) {
     <app-todo-item
       [todo]="todo"
       (removeTodo)="HandleRemoveTodo($event)" 
-    />
+    >
+    </app-todo-item>
   } @empty {
     <span>Empty list of todos</span>
   }

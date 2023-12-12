@@ -6,6 +6,8 @@
         [checked]="todo.completed"
         />
         {{ todo.title }}
-        <button (click)="HandleRemove(todo)" class="del">x</button>
+        <button (click)="HandleRemove(todo)" class="del">
+            <mat-icon>close</mat-icon>
+        </button>
     </p>
 </div>

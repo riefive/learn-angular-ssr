@@ -1,0 +1,12 @@
+<form class="form" type="submit" (ngSubmit)="HandleSubmit()" class="my-2">
+    <mat-form-field>
+        <input
+            [(ngModel)]="title"
+            type="text"
+            name="title"
+            placeholder="Your Todo Here..."
+            matInput
+        />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" class="mx-4">Add Todo</button>
+</form>
