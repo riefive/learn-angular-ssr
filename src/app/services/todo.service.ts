@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Todo } from '../models/todo';
@@ -13,23 +13,24 @@ const httpOptions = {
 export class TodoService {
   todosUrl: string = 'https://jsonplaceholder.typicode.com/todos';
   todosLimit: string = '?_limit=10';
+  private http: HttpClient = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  getTodos(): Observable<Todo[]> {
+  GetTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.todosUrl + this.todosLimit}`);
   }
 
-  addTodo(todo: Todo): Observable<Todo> {
+  AddTodo(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>(this.todosUrl, todo, httpOptions);
   }
 
-  editCompleted(todo: Todo): Observable<any> {
+  EditCompleted(todo: Todo): Observable<any> {
     const url = `${this.todosUrl}/${todo.id}`;
     return this.http.put(url, todo, httpOptions);
   }
 
-  removeTodo(todo: Todo): Observable<Todo> {
+  RemoveTodo(todo: Todo): Observable<Todo> {
     const url = `${this.todosUrl}/${todo.id}`;
     return this.http.delete<Todo>(url, httpOptions);
   }

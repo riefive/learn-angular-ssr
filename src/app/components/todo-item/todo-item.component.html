@@ -1,0 +1,11 @@
+<div>
+    <p>
+        <input
+        (change)="HandleToggle(todo)"
+        type="checkbox"
+        [checked]="todo.completed"
+        />
+        {{ todo.title }}
+        <button (click)="HandleRemove(todo)" class="del">x</button>
+    </p>
+</div>
